@@ -20,9 +20,31 @@ bool isCycle(std::vector<std::vector<int>> adjList, int V, int src, std::vector<
             }
             else
             {
-                if (connectedNode == parent)
+                if (connectedNode != parent)
                     return true;
             }
+        }
+    }
+    return false;
+}
+
+// cycle detection using dfs
+bool isCycle(std::vector<std::vector<int>> &adjList, int V, int src, int parent, std::vector<int> &visited)
+{
+    visited[src] = 1;
+    for (auto node : adjList[src])
+    {
+        if (!visited[node])
+        {
+            if (isCycle(adjList, V, node, parent, visited))
+            {
+                return true;
+            }
+        }
+        else
+        {
+            if (node != parent)
+                return true;
         }
     }
     return false;
