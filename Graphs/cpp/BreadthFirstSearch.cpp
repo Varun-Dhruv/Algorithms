@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// T.C -> O(V+E)
 // single source
 std::vector<int> bfs(std::vector<std::vector<int>> &adjList, int V, int src, std::vector<int> &visited)
 {
